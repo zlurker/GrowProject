@@ -28,7 +28,7 @@ public class GameInput : MonoBehaviour
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (Physics.Raycast(ray, out hit, 20))
             {
@@ -49,7 +49,7 @@ public class GameInput : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             RaycastHit anchorPoint;
             if (Physics.Raycast(ray, out anchorPoint, 20))
@@ -67,7 +67,7 @@ public class GameInput : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)|| Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             if (!toScroll)
             {
